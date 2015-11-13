@@ -23,46 +23,44 @@ pieces.
 
 /* === Step 1 === */
 
-// // We can prime the model cache with a new falcor.Model
-// var model = new falcor.Model({
-//   cache: {
-//     products: [
-//       {
-//         id: 24,
-//         name: 'Tomorrow is today, Red printed scarf',
-//         price: '$15.00',
-//         categories: [
-//           {
-//             id: 1,
-//             name: 'accessories'
-//           }
-//         ],
-//       },
-//       {
-//         id: 25,
-//         name: 'Chanel the Cheetah',
-//         price: '$500.00',
-//         categories: [
-//           {
-//             id: 1,
-//             name: 'accessories'
-//           },
-//           {
-//             id: 2,
-//             name: 'bags'
-//           }
-//         ],
-//       }
-//     ]
-//   }
-// });
+// We can prime the model cache with a new falcor.Model
+var model = new falcor.Model({
+  cache: {
+    products: [
+      {
+        name: 'Tomorrow is today, Red printed scarf',
+        price: '$15.00',
+        categories: [
+          {
+            id: 1,
+            name: 'accessories'
+          }
+        ],
+      },
+      {
+        name: 'Chanel the Cheetah',
+        price: '$500.00',
+        categories: [
+          {
+            id: 1,
+            name: 'accessories'
+          },
+          {
+            id: 2,
+            name: 'bags'
+          }
+        ],
+      }
+    ]
+  }
+});
 
 // model
 //   // We want the name and price values for the first two products
 //   // from the data model
 //   // FIX ME
-//   // .get(["products", {from: 0, to: 1}, ["name", "price"]], ["products", {from: 0, to: 1}, "categories", 0, "name"])
-//   .get(["products", {from: 0, to: 2}, ["name", "price", "categories"]])
+//   .get(["products", {from: 0, to: 1}, ["name", "price"]], ["products", {from: 0, to: 1}, "categories", 0, "name"])
+//   // .get(["products", {from: 0, to: 2}, ["name", "price", "categories"]])
 //   .then(function(response) {
 //     document.getElementById("event-data").innerHTML = JSON.stringify(response, null, 2);
 //   });
@@ -83,7 +81,7 @@ pieces.
 
 /* === Step 2 === */
 
-// // We can use the shorthand for references with a variable
+// We can use the shorthand for references with a variable
 // var $ref = falcor.Model.ref;
 
 // var model = new falcor.Model({
@@ -98,7 +96,6 @@ pieces.
 //     },
 //     products: [
 //       {
-//         id: 24,
 //         name: 'Tomorrow is today, Red printed scarf',
 //         price: '$15.00',
 //         categories: [
@@ -106,7 +103,6 @@ pieces.
 //         ],
 //       },
 //       {
-//         id: 25,
 //         name: 'Chanel the Cheetah',
 //         price: '$500.00',
 //         categories: [
@@ -128,7 +124,7 @@ pieces.
 //       .get(["products", {from: 0, to: 1}, ["name", "price"]], ["products", {from: 0, to: 1}, "categories", 0, "name"])
 //       .then(function(response) {
 //         document.getElementById('event-data').innerHTML = JSON.stringify(response, null, 2);
-//       });    
+//       }); 
 //   });
 
 
@@ -139,7 +135,7 @@ pieces.
 var model = new falcor.Model({source: new falcor.HttpDataSource('/model.json')});
 
 model
-  .get(["events", {from: 0, to: 2}, ["name", "description"]])
+  .get(["products", {from: 0, to: 1}, ["name", "price"]], ["products", {from: 0, to: 1}, "categories" , 0, "name"])
   .then(function(response) {
-    document.getElementById('event-data').innerHTML = JSON.stringify(response, null, 2);
+    document.getElementById("event-data").innerHTML = JSON.stringify(response, null, 2);
   });
